@@ -5,6 +5,7 @@ const productos = [
     { nombre: "MOnitor", precio: 3000 }
 ];
 
-//Tu codigo aqui 
+const productosCaros = productos.filter(producto => producto.precio > 1000);
+const nombres = productosCaros.map(producto => producto.nombre);
 
-console.log(nombre); // ["Laptop", "Monitor"]
+console.log(nombres); // ["Laptop", "Monitor"]
