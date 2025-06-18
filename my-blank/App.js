@@ -20,9 +20,7 @@ export default function App() {
     <View style={styles.container}>
       <StatusBar style="auto" />
 
-      <Texto style={styles.red}></Texto>
-      <Texto style={styles.green}></Texto>
-      <Texto style={styles.blue}></Texto>
+      <Texto ></Texto>
       
     </View>
   );
@@ -34,11 +32,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     flexDirection: 'column',
   },
   text: {
-    color: 'white',
+    color: 'black',
     fontSize: 25,
     height: 120,
   },
