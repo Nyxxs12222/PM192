@@ -1,18 +1,33 @@
 /* Zone 1: Importaciones */
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button, Alert, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Button, Alert, TextInput } from 'react-native';
 import React, { useState } from 'react';
 
 /* Zone 2: Main */
 export default function App() {
+  const [nombre, setNombre] = useState('');
+
+  const mostrarAlerta = () => {
+    if (nombre.trim() === '') {
+      Alert.alert('Error', 'Por favor escribe algo');
+      alert('Escribe algo');
+    } else {
+      Alert.alert('Bienvenido', `Hola ${nombre}, bienvenido a nuestra app`);
+      alert('Hola ' + nombre + ', bienvenido');
+    }
+  };
+
   return (
     <View style={styles.container}>
-      <Button 
-        title='Press Me!!'
-        onPress={()=>alert('Me has presionado')}
-      >
+      <Text style={styles.text}>Ingresa tu nombre</Text>
 
-      </Button>
+      <TextInput 
+        style={styles.input}
+        placeholder='Escribe tu nombre'
+        onChangeText={setNombre}
+        value={nombre}
+      />
+
+      <Button title='Enviar' onPress={mostrarAlerta} />
     </View>
   );
 }
@@ -20,20 +35,23 @@ export default function App() {
 /* Zone 3: Estilos */
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flex: 1,
+    justifyContent: 'center',
+    paddingHorizontal: 20,
+    backgroundColor: '#fff'
   },
-  Button: {
-    marginTop: 10, 
-    alignItems: 'center',
-    backgroundColor: '#234354',
-  },
-  textBotton: {
-    color: '#12354',
+  text: {
     fontSize: 18,
+    marginBottom: 10,
+    color: '#000'
   },
-  Image: {
-    width: 100,
-    height: 100,
+  input: {
+    borderWidth: 1,
+    borderColor: '#000',
+    padding: 10,
+    marginBottom: 20,
+    borderRadius: 5,
+    backgroundColor: '#f9f9f9',
+    color: '#000'
   }
 });
