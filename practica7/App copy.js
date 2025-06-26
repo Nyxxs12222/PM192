@@ -9,7 +9,7 @@ const FondoBienvenida = () => {
       style={styles.fondo}
     >
       <View style={styles.contenido}>
-        <Text style={styles.titulo}>¡Bienvenido a la App!</Text>
+        <Text style={styles.titulo}>¡Pantalla de unicio!</Text>
       </View>
     </ImageBackground>
   );
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,0.4)', // para oscurecer la imagen
+    backgroundColor: 'rgba(0,0,0,0.4)', 
   },
   titulo: {
     fontSize: 28,

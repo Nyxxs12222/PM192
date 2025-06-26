@@ -22,7 +22,7 @@ export default function App() {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setShowSplash(false);  // Ocultar splash después de 3 segundos
+      setShowSplash(false); 
     }, 5000);
 
     return () => clearTimeout(timer); // Limpiar timer al desmontar

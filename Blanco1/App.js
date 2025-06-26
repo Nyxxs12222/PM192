@@ -1,33 +1,56 @@
 /* Zone 1: Importaciones */
-import { StyleSheet, Text, View, Button, Alert, TextInput } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View, Button, Alert, TouchableOpacity, Image } from 'react-native';
 import React, { useState } from 'react';
 
 /* Zone 2: Main */
 export default function App() {
-  const [nombre, setNombre] = useState('');
 
-  const mostrarAlerta = () => {
-    if (nombre.trim() === '') {
-      Alert.alert('Error', 'Por favor escribe algo');
-      alert('Escribe algo');
-    } else {
-      Alert.alert('Bienvenido', `Hola ${nombre}, bienvenido a nuestra app`);
-      alert('Hola ' + nombre + ', bienvenido');
-    }
-  };
+  const [botonDesactivado, setBotonDesactivado] = useState(false);
+  const [contador, setContador] = useState(0)
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Ingresa tu nombre</Text>
 
-      <TextInput 
-        style={styles.input}
-        placeholder='Escribe tu nombre'
-        onChangeText={setNombre}
-        value={nombre}
+      <Button 
+        title='Presioname!!'
+        color={'#841584'}
+        onPress={() => alert('Me has presionado')}
       />
 
-      <Button title='Enviar' onPress={mostrarAlerta} />
+      <Button
+        title={botonDesactivado ? "Desactivado" : "Desactivame"}
+        disabled={botonDesactivado}
+        onPress={() => setBotonDesactivado(true)}
+      />
+
+      <View style={styles.botonJUstificado}>
+        <Button
+          title="Left button"
+          color="#674323"
+        />
+        <Button 
+          title='Right button'
+          color="#097865"
+        />
+      </View>
+
+      <TouchableOpacity
+        style={styles.dynamicButton}
+        onPress={() => setContador(contador + 1)}
+      >
+        <Text style={styles.dynamicText}>{contador}</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        onPress={() => alert("La pokebola ha sido presionada")}
+      >
+        <Image
+          source={require('./assets/pokebola.png')}
+          style={styles.Imagen}
+        />
+      </TouchableOpacity>
+
     </View>
   );
 }
@@ -36,22 +59,31 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: 'column',
     justifyContent: 'center',
-    paddingHorizontal: 20,
-    backgroundColor: '#fff'
+    alignItems: 'center',
+    padding: 20
   },
-  text: {
-    fontSize: 18,
-    marginBottom: 10,
-    color: '#000'
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: '#000',
+  dynamicButton: {
     padding: 10,
-    marginBottom: 20,
+    marginTop: 10,
+    backgroundColor: '#987867',
     borderRadius: 5,
-    backgroundColor: '#f9f9f9',
-    color: '#000'
+    alignItems: 'center'
+  },
+  dynamicText: {
+    color: '#345676',
+    fontSize: 19
+  },
+  Imagen: {
+    width: 100,
+    height: 100,
+    marginTop: 15
+  },
+  botonJUstificado: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+    marginTop: 15
   }
 });
